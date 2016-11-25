@@ -1,0 +1,12 @@
+
+public class Tables {
+
+	public static void add(String username, String password,
+			String ConnString, String Driver) {
+		
+		Class.forName(Driver);
+		
+		
+	}
+
+}

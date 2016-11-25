@@ -1,0 +1,39 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+
+public class Tables {
+
+	public static void add(String Username, String Password,
+			String ConnString, String Driver) {
+
+		Connection conn;
+		Statement stmt;
+		
+		try{
+			Class.forName(Driver);
+			
+			conn = DriverManager.getConnection(ConnString, Username, Password);
+			
+			System.out.println("Inserting entries into tables");
+			
+			String SQLAddAuthors = "INSERT INTO authors (firstName, lastName) " +
+					"VALUES ('J.K', 'Rowling')";
+			
+			stmt = conn.createStatement();
+			
+			stmt.executeUpdate(SQLAddAuthors);
+			
+			System.out.println("Finished inserting entries");
+			
+			stmt.close();
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}

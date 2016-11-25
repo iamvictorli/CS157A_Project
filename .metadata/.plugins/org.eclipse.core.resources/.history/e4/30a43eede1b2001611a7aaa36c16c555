@@ -1,0 +1,58 @@
+import java.sql.*;
+
+
+public class Tables {
+
+	public static void add(String Username, String Password,
+			String ConnString, String Driver) {
+
+		Connection conn;
+		Statement stmt;
+		
+		try{
+			Class.forName(Driver);
+			
+			conn = DriverManager.getConnection(ConnString, Username, Password);
+			System.out.println("Inserting entries into tables");
+						
+			stmt = conn.createStatement();
+			conn.setAutoCommit(false);
+			
+			//sql statement to insert table authors
+			String SQLAddAuthor = "INSERT INTO authors " +
+					"(authorID, firstName, lastName) " +
+					"VALUES(1, 'J.K', 'Rowling')";
+			//sql statement to insert table authorISBN
+			String SQLAddAuthorISBN = "INSERT INTO authorISBN " +
+					"(authorId, isbn) " +
+					"VALUES(1, '978140883')";
+			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddAuthorISBN);
+			
+			
+			
+			SQLAddAuthor = "INSERT INTO authors " +
+					"(authorID, firstName, lastName) " +
+					"VALUES(2, 'Stephen', 'Hawking')";
+			SQLAddAuthorISBN = "INSERT INTO authorISBN " +
+					"(authorId, isbn) " +
+					"VALUES(1, '978159777')";
+			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddAuthorISBN);
+
+			
+			stmt.executeBatch();
+			conn.commit();
+			
+			
+			//prepared statements for adding publishers
+			System.out.println("Finished inserting entries");
+			
+			stmt.close();
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}

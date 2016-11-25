@@ -1,0 +1,94 @@
+import java.sql.*;
+
+
+public class Tables {
+
+	public static void add(String Username, String Password,
+			String ConnString, String Driver) {
+
+		Connection conn;
+		Statement stmt;
+		
+		try{
+			Class.forName(Driver);
+			
+			conn = DriverManager.getConnection(ConnString, Username, Password);
+			System.out.println("Inserting entries into tables");
+						
+			stmt = conn.createStatement();
+			conn.setAutoCommit(false);
+			
+			//sql statement to insert table authors
+			String SQLAddAuthor = "INSERT INTO authors " +
+					"(authorID, firstName, lastName) " +
+					"VALUES(1, 'J.K', 'Rowling')";
+			//sql statement to insert table authorISBN
+			String SQLAddAuthorISBN = "INSERT INTO authorISBN " +
+					"(authorId, isbn) " +
+					"VALUES(1, '978140883')";
+			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddAuthorISBN);
+			
+			
+			
+			
+			
+			
+//			stmt = conn.prepareStatement(SQLAddAuthors);
+//			conn.setAutoCommit(false);
+//			
+//			stmt.setInt(1, 1); stmt.setString(2, "J.K"); stmt.setString(3, "Rowling");
+//			stmt.addBatch();
+//			
+//			stmt.setInt(1, 2); stmt.setString(2, "Stephen"); stmt.setString(3, "Hawking");
+//			stmt.addBatch();
+//			
+//			stmt.executeBatch();
+//			conn.commit();
+//			
+//			
+//			
+//			
+//			
+//			stmt = conn.prepareStatement(SQLAddAuthorsISBN);
+//			
+//			stmt.setInt(1, 1); stmt.setString(2, "978140883");
+//			stmt.addBatch();
+//			
+//			stmt.setInt(1, 2); stmt.setString(2, "978159777");
+//			stmt.addBatch();
+//			
+//			stmt.executeBatch();
+//			conn.commit();
+//			
+//			
+//			
+//			//prepared statements for adding titles
+//			String SQLAddTitles = "INSERT INTO titles " +
+//					"(authorId, isbn) " +
+//					"VALUES(?, ?)";
+//			
+//			stmt = conn.prepareStatement(SQLAddAuthorsISBN);
+//			
+//			stmt.setInt(1, 1); stmt.setString(2, "978140883");
+//			stmt.addBatch();
+//			
+//			stmt.setInt(1, 2); stmt.setString(2, "978159777");
+//			stmt.addBatch();
+			
+			stmt.executeBatch();
+			conn.commit();
+			
+			
+			//prepared statements for adding publishers
+			System.out.println("Finished inserting entries");
+			
+			stmt.close();
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}

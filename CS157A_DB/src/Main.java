@@ -19,5 +19,7 @@ public class Main {
 		String BookConnection = "jdbc:mysql://localhost/Books";
 		Database.PopulateDB(USERNAME, PASSWORD, BookConnection, JDBC_DRIVER);
 		
+		//add data into tables
+		Tables.add(USERNAME, PASSWORD, BookConnection, JDBC_DRIVER);
 	}
 }
