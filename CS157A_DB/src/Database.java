@@ -17,7 +17,7 @@ public class Database {
 			stmt = conn.createStatement();
 			
 			//drop database books if it already exists
-			//stmt.execute("DROP DATABASE Books");
+			stmt.execute("DROP DATABASE Books");
 			
 			String sql = "CREATE DATABASE Books";
 			stmt.execute(sql);

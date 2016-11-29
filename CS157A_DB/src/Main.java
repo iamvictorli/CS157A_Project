@@ -21,5 +21,8 @@ public class Main {
 		
 		//add data into tables
 		Tables.add(USERNAME, PASSWORD, BookConnection, JDBC_DRIVER);
+		
+		//issues sql statements. For queries print the results
+		Statements.query(USERNAME, PASSWORD, BookConnection, JDBC_DRIVER);
 	}
 }

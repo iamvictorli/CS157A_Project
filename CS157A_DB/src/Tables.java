@@ -71,6 +71,35 @@ public class Tables {
 			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddAuthorISBN);
 			stmt.addBatch(SQLAddTitles); stmt.addBatch(SQLAddPublishers);
 			
+			
+			
+			SQLAddAuthorISBN = "INSERT INTO authorISBN " +
+					"(authorId, isbn) " +
+					"VALUES(1, '747532745')";
+			SQLAddTitles = "INSERT INTO titles " +
+					"(isbn, title, editionNumber, copyright, publisherID, price) " +
+					"VALUES('747532745', 'Harry Potter and the Philosophers Stone', 3, 1997, 1, 30.00)";
+			stmt.addBatch(SQLAddAuthorISBN); stmt.addBatch(SQLAddTitles); 
+			
+			
+			
+			SQLAddAuthor = "INSERT INTO authors " +
+					"(authorID, firstName, lastName) " +
+					"VALUES(4, 'Stephen', 'King')";
+			SQLAddAuthorISBN = "INSERT INTO authorISBN " +
+					"(authorId, isbn) " +
+					"VALUES(4, '9780670813')";
+			SQLAddTitles = "INSERT INTO titles " +
+					"(isbn, title, editionNumber, copyright, publisherID, price) " +
+					"VALUES('9780670813', 'Misery', 1, 1987, 4, 50.00)";
+			SQLAddPublishers = "INSERT INTO publishers " +
+					"(publisherID, publisherName) " +
+					"VALUES(4, 'Viking')";
+			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddAuthorISBN);
+			stmt.addBatch(SQLAddTitles); stmt.addBatch(SQLAddPublishers);
+			
+			
+			
 			//executes the batch
 			stmt.executeBatch();
 			conn.commit();
