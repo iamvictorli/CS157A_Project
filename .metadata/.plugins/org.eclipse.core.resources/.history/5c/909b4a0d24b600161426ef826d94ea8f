@@ -82,8 +82,8 @@ public class Statements {
 			
 			
 			//edit author id
-			stmt.executeUpdate(UpdateAuthor("J.K", "Rowling", 100));
-			System.out.println("Updating author J.K Rowling authorID");
+			stmt.executeUpdate(UpdateAuthor("Ahmed", "Ezzat", 100));
+			System.out.println("Updating author Ahmed Ezzat authorID");
 			System.out.println("Table authors and authorISBN after updating author");
 			
 			rs = stmt.executeQuery("SELECT * " +

@@ -82,8 +82,8 @@ public class Statements {
 			
 			
 			//edit author id
-			stmt.executeUpdate(UpdateAuthor("J.K", "Rowling", 100));
-			System.out.println("Updating author J.K Rowling authorID");
+			stmt.executeUpdate(UpdateAuthor("Ahmed", "Ezzat", 100));
+			System.out.println("Updating author Ahmed Ezzat authorID");
 			System.out.println("Table authors and authorISBN after updating author");
 			
 			rs = stmt.executeQuery("SELECT * " +
@@ -151,7 +151,7 @@ public class Statements {
 	private static String UpdateAuthor(String firstName, String lastName, int NewAuthorID) {
 		return "UPDATE authors " +
 				"SET authorID=" + NewAuthorID +
-				" WHERE firstName='" + firstName + "' AND " + "lastName='" + lastName + "'";
+				"WHERE firstName='" + firstName + "' AND " + "lastName='" + lastName + "'";
 	}
 	
 	//add a new title for an author

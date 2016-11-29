@@ -55,8 +55,8 @@ public class Database {
 		    String authorISBN = "CREATE TABLE authorISBN " +
 	                   "(authorId INTEGER, " +
 	                   " isbn CHAR(10), " +
-	                   "FOREIGN KEY ( authorID ) REFERENCES authors ( authorID ) " +
-	                   		"ON UPDATE CASCADE)";
+	                   "FOREIGN KEY ( authorID ) REFERENCES authors ( authorID )) " +
+	                   		"ON UPDATE CASCADE";
 		    
 		    String titles = "CREATE TABLE titles " +
 	                   "(isbn CHAR(10) NOT NULL, " +

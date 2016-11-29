@@ -81,32 +81,6 @@ public class Statements {
 			
 			
 			
-			//edit author id
-			stmt.executeUpdate(UpdateAuthor("J.K", "Rowling", 100));
-			System.out.println("Updating author J.K Rowling authorID");
-			System.out.println("Table authors and authorISBN after updating author");
-			
-			rs = stmt.executeQuery("SELECT * " +
-									"FROM authors");
-			
-			while(rs.next()) {
-				int authorId = rs.getInt("authorId");
-				String firstName = rs.getString("firstName");
-				String lastName = rs.getString("lastName");
-				System.out.println("authorID: " + authorId + " firstName: " + firstName + " lastName: " + lastName);
-			}
-			rs = stmt.executeQuery("SELECT * " +
-									"FROM authorISBN");
-			while(rs.next()) {
-				int authorID = rs.getInt("authorID");
-				String isbn = rs.getString("isbn");
-				System.out.println("authorID: " + authorID + " isbn: " + isbn);
-			}
-	
-			System.out.println();
-			
-			
-			
 			rs.close();
 			stmt.close();
 			conn.close();
@@ -141,17 +115,16 @@ public class Statements {
 	
 	//adds new author
 	private static String AddAuthor(String firstName, String lastName) {
-		return "INSERT INTO authors " +
+		String s= "INSERT INTO authors " +
 				"(firstName, lastName) " +
 				"VALUES ('" + firstName + "','" + lastName + "')";
+		System.out.println(s);
+		return s;
 	}
 	
 	//edit/update existing information about an author
-	//updates authorID when given firstName and lastName
-	private static String UpdateAuthor(String firstName, String lastName, int NewAuthorID) {
-		return "UPDATE authors " +
-				"SET authorID=" + NewAuthorID +
-				" WHERE firstName='" + firstName + "' AND " + "lastName='" + lastName + "'";
+	private static String UpdateAuthor(String s) {
+		return "";
 	}
 	
 	//add a new title for an author
