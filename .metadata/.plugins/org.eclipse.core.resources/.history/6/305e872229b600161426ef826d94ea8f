@@ -66,8 +66,8 @@ public class Database {
 	                   "publisherID INTEGER, " +
 	                   "price FLOAT, " +
 	                   "PRIMARY KEY ( isbn ), " +
-	                   "FOREIGN KEY ( publisherID ) REFERENCES publishers ( publisherID ) " +
-                  			"ON UPDATE CASCADE)";
+//	                   "FOREIGN KEY ( publisherID ) REFERENCES publishers ( publisherID ) " +
+//                  			"ON UPDATE CASCADE)";
 		    
 		    String publishers = "CREATE TABLE publishers " +
 	                   "(publisherID INTEGER NOT NULL AUTO_INCREMENT, " +
@@ -76,9 +76,8 @@ public class Database {
 
 		    stmt.executeUpdate(authors);
 		    stmt.executeUpdate(authorISBN);
-		    stmt.executeUpdate(publishers);
 		    stmt.executeUpdate(titles);
-		    
+		    stmt.executeUpdate(publishers);
 		    
 		    stmt.close();
 		    conn.close();

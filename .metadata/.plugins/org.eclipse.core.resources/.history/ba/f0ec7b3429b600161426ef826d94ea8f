@@ -59,14 +59,14 @@ public class Database {
 	                   		"ON UPDATE CASCADE)";
 		    
 		    String titles = "CREATE TABLE titles " +
-	                   "(isbn CHAR(10) NOT NULL, " +
-	                   "title VARCHAR(2500), " + 
-	                   "editionNumber INTEGER, " + 
-	                   "copyright CHAR(4), " +
-	                   "publisherID INTEGER, " +
-	                   "price FLOAT, " +
-	                   "PRIMARY KEY ( isbn ), " +
-	                   "FOREIGN KEY ( publisherID ) REFERENCES publishers ( publisherID ) " +
+	                   " (isbn CHAR(10) NOT NULL, " +
+	                   " title VARCHAR(2500), " + 
+	                   " editionNumber INTEGER, " + 
+	                   " copyright CHAR(4), " +
+	                   " publisherID INTEGER, " +
+	                   " price FLOAT, " +
+	                   //" PRIMARY KEY ( isbn ), " +
+	                   " FOREIGN KEY ( publisherID ) REFERENCES publishers ( publisherID ) " +
                   			"ON UPDATE CASCADE)";
 		    
 		    String publishers = "CREATE TABLE publishers " +
@@ -76,9 +76,8 @@ public class Database {
 
 		    stmt.executeUpdate(authors);
 		    stmt.executeUpdate(authorISBN);
-		    stmt.executeUpdate(publishers);
 		    stmt.executeUpdate(titles);
-		    
+		    stmt.executeUpdate(publishers);
 		    
 		    stmt.close();
 		    conn.close();

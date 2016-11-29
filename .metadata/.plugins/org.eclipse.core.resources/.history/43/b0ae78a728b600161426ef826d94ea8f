@@ -65,7 +65,7 @@ public class Database {
 	                   "copyright CHAR(4), " +
 	                   "publisherID INTEGER, " +
 	                   "price FLOAT, " +
-	                   "PRIMARY KEY ( isbn ), " +
+	                   //"PRIMARY KEY ( isbn ), " +
 	                   "FOREIGN KEY ( publisherID ) REFERENCES publishers ( publisherID ) " +
                   			"ON UPDATE CASCADE)";
 		    
@@ -76,9 +76,8 @@ public class Database {
 
 		    stmt.executeUpdate(authors);
 		    stmt.executeUpdate(authorISBN);
-		    stmt.executeUpdate(publishers);
 		    stmt.executeUpdate(titles);
-		    
+		    stmt.executeUpdate(publishers);
 		    
 		    stmt.close();
 		    conn.close();

@@ -58,6 +58,12 @@ public class Database {
 	                   "FOREIGN KEY ( authorID ) REFERENCES authors ( authorID ) " +
 	                   		"ON UPDATE CASCADE)";
 		    
+		    
+		    String publishers = "CREATE TABLE publishers " +
+	                   "(publisherID INTEGER NOT NULL AUTO_INCREMENT, " +
+	                   "publisherName CHAR(100), " +
+	                   "PRIMARY KEY ( publisherID ))";
+		    
 		    String titles = "CREATE TABLE titles " +
 	                   "(isbn CHAR(10) NOT NULL, " +
 	                   "title VARCHAR(2500), " + 
@@ -69,16 +75,12 @@ public class Database {
 	                   "FOREIGN KEY ( publisherID ) REFERENCES publishers ( publisherID ) " +
                   			"ON UPDATE CASCADE)";
 		    
-		    String publishers = "CREATE TABLE publishers " +
-	                   "(publisherID INTEGER NOT NULL AUTO_INCREMENT, " +
-	                   "publisherName CHAR(100), " +
-	                   "PRIMARY KEY ( publisherID ))";
+		    
 
 		    stmt.executeUpdate(authors);
 		    stmt.executeUpdate(authorISBN);
-		    stmt.executeUpdate(publishers);
 		    stmt.executeUpdate(titles);
-		    
+		    stmt.executeUpdate(publishers);
 		    
 		    stmt.close();
 		    conn.close();

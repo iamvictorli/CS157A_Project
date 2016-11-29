@@ -48,37 +48,34 @@ public class Database {
 		      
 		    String authors = "CREATE TABLE authors " +
 		                   "(authorID INTEGER NOT NULL AUTO_INCREMENT, " +
-		                   "firstName CHAR(20), " + 
-		                   "lastName CHAR(20), " +  
-		                   "PRIMARY KEY ( authorId ))"; 
+		                   " firstName CHAR(20), " + 
+		                   " lastName CHAR(20), " +  
+		                   " PRIMARY KEY ( authorId ))"; 
 		    
 		    String authorISBN = "CREATE TABLE authorISBN " +
 	                   "(authorId INTEGER, " +
-	                   "isbn CHAR(10), " +
+	                   " isbn CHAR(10), " +
 	                   "FOREIGN KEY ( authorID ) REFERENCES authors ( authorID ) " +
 	                   		"ON UPDATE CASCADE)";
 		    
 		    String titles = "CREATE TABLE titles " +
 	                   "(isbn CHAR(10) NOT NULL, " +
-	                   "title VARCHAR(2500), " + 
-	                   "editionNumber INTEGER, " + 
-	                   "copyright CHAR(4), " +
-	                   "publisherID INTEGER, " +
-	                   "price FLOAT, " +
-	                   "PRIMARY KEY ( isbn ), " +
-	                   "FOREIGN KEY ( publisherID ) REFERENCES publishers ( publisherID ) " +
-                  			"ON UPDATE CASCADE)";
+	                   " title VARCHAR(2500), " + 
+	                   " editionNumber INTEGER, " + 
+	                   " copyright CHAR(4), " +
+	                   " publisherID INTEGER, " +
+	                   " price FLOAT, " +
+	                   " PRIMARY KEY ( isbn ))";
 		    
 		    String publishers = "CREATE TABLE publishers " +
 	                   "(publisherID INTEGER NOT NULL AUTO_INCREMENT, " +
-	                   "publisherName CHAR(100), " +
-	                   "PRIMARY KEY ( publisherID ))";
+	                   " publisherName CHAR(100), " +
+	                   " PRIMARY KEY ( publisherID ))";
 
 		    stmt.executeUpdate(authors);
 		    stmt.executeUpdate(authorISBN);
-		    stmt.executeUpdate(publishers);
 		    stmt.executeUpdate(titles);
-		    
+		    stmt.executeUpdate(publishers);
 		    
 		    stmt.close();
 		    conn.close();

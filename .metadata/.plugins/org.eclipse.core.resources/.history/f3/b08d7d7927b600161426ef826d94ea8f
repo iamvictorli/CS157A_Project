@@ -107,50 +107,6 @@ public class Statements {
 			
 			
 			
-			//add new publisher
-			stmt.executeUpdate(AddPublisher("SJSU"));
-			System.out.println("Adding publisher SJSU");
-			System.out.println("Table publishers after adding new publisher");
-			
-			rs = stmt.executeQuery("SELECT * " +
-									"FROM publishers");
-			
-			while(rs.next()) {
-				int publisherID = rs.getInt("publisherID");
-				String publisherName = rs.getString("publisherName");
-				System.out.println("publisherID: " + publisherID + " publisherName: " + publisherName);
-			}
-			System.out.println();
-			
-			
-			
-			//update publisher
-			stmt.executeUpdate(UpdatePublisher("Bloomsbury", 5000));
-			System.out.println("Updating publisher Bloomsbury publisherID");
-			System.out.println("Table publishers and titles after updating author");
-			
-			rs = stmt.executeQuery("SELECT * " +
-									"FROM publishers");
-			
-			while(rs.next()) {
-				int publisherID = rs.getInt("publisherID");
-				String publisherName = rs.getString("publisherName");
-				System.out.println("publisherID: " + publisherID + " publisherName: " + publisherName);
-			}
-			
-			rs = stmt.executeQuery("SELECT title, copyright, isbn, publisherID " +
-									"FROM titles");
-			
-			while(rs.next()) {
-				String title = rs.getString("title");
-				String copyright = rs.getString("copyright");
-				String isbn = rs.getString("isbn");
-				int publisherID = rs.getInt("publisherID");
-				System.out.println("title: " + title + " year: " + copyright + " isbn: " + isbn + " publisherID: " + publisherID);
-			}
-			System.out.println();
-			
-			
 			rs.close();
 			stmt.close();
 			conn.close();
@@ -204,17 +160,15 @@ public class Statements {
 	}
 	
 	//add new publisher
-	private static String AddPublisher(String publisherName) {
-		return "INSERT INTO publishers " +
-				"(publisherName) " +
-				"VALUES ('" + publisherName + "')";
-	}
-	
-	//edit/update existing information about a publisher
 	//updates publisherID when given publisherName
-	private static String UpdatePublisher(String publisherName, int NewPublisherID) {
+	private static String AddPublisher(String publisherName, int NewPublisherID) {
 		return "UPDATE publishers " +
 				"SET publisherID=" + NewPublisherID +
 				" WHERE publisherName='" + publisherName + "'";
+	}
+	
+	//edit/update existing information about a publisher
+	private static String UpdatePublisher(String s) {
+		return "";
 	}
 }
