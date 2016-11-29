@@ -79,8 +79,6 @@ public class Statements {
 			
 			System.out.println();
 			
-			
-			
 			rs.close();
 			stmt.close();
 			conn.close();

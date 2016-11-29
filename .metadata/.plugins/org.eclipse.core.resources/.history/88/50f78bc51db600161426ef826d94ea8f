@@ -60,27 +60,6 @@ public class Statements {
 			}
 			System.out.println();
 			
-			
-			
-			//adds new author
-			stmt.executeUpdate(AddAuthor("Ahmed", "Ezzat"));
-			System.out.println("Adding author Ahmed Ezzat");
-			System.out.println("Table authors after adding new author");
-			
-			rs = stmt.executeQuery("SELECT * " +
-									"FROM authors");
-			
-			while(rs.next()) {
-				int authorId = rs.getInt("authorId");
-				String firstName = rs.getString("firstName");
-				String lastName = rs.getString("lastName");
-				System.out.println("authorID: " + authorId + " firstName: " + firstName + " lastName: " + lastName);
-			}
-			
-			System.out.println();
-			
-			
-			
 			rs.close();
 			stmt.close();
 			conn.close();
@@ -113,31 +92,22 @@ public class Statements {
 				"ORDER BY titles.title";
 	}
 	
-	//adds new author
-	private static String AddAuthor(String firstName, String lastName) {
-		String s= "INSERT INTO authors " +
-				"(firstName, lastName) " +
-				"VALUES ('" + firstName + "','" + lastName + "')";
-		System.out.println(s);
-		return s;
+	private static String AddAuthor(String s) {
+		return "";
 	}
 	
-	//edit/update existing information about an author
 	private static String UpdateAuthor(String s) {
 		return "";
 	}
 	
-	//add a new title for an author
 	private static String AddNewTitleAuthor(String s) {
 		return "";
 	}
 	
-	//add new publisher
 	private static String AddPublisher(String s) {
 		return "";
 	}
 	
-	//edit/update existing information about a publisher
 	private static String UpdatePublisher(String s) {
 		return "";
 	}

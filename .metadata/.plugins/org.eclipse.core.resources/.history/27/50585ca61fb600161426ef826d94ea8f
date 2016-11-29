@@ -63,7 +63,7 @@ public class Statements {
 			
 			
 			//adds new author
-			stmt.executeUpdate(AddAuthor("Ahmed", "Ezzat"));
+			stmt.executeQuery(AddAuthor("Ahmed", "Ezzat"));
 			System.out.println("Adding author Ahmed Ezzat");
 			System.out.println("Table authors after adding new author");
 			
@@ -71,15 +71,11 @@ public class Statements {
 									"FROM authors");
 			
 			while(rs.next()) {
-				int authorId = rs.getInt("authorId");
-				String firstName = rs.getString("firstName");
-				String lastName = rs.getString("lastName");
-				System.out.println("authorID: " + authorId + " firstName: " + firstName + " lastName: " + lastName);
+				int publisherID = rs.getInt("publisherID");
+				String publisherName = rs.getString("publisherName");
+				System.out.println("publisherID: " + publisherID + " publisherName: " + publisherName);
 			}
-			
 			System.out.println();
-			
-			
 			
 			rs.close();
 			stmt.close();
@@ -115,11 +111,9 @@ public class Statements {
 	
 	//adds new author
 	private static String AddAuthor(String firstName, String lastName) {
-		String s= "INSERT INTO authors " +
+		return "INSERT INTO authors " +
 				"(firstName, lastName) " +
-				"VALUES ('" + firstName + "','" + lastName + "')";
-		System.out.println(s);
-		return s;
+				"VALUES('" + firstName + "','" + lastName + "'";
 	}
 	
 	//edit/update existing information about an author
