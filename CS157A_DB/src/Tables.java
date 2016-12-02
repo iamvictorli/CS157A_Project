@@ -34,8 +34,8 @@ public class Tables {
 					"(publisherID, publisherName) " +
 					"VALUES(1, 'Bloomsbury')";
 			//adding multiple queries into a batch
-			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddAuthorISBN);
-			stmt.addBatch(SQLAddPublishers); stmt.addBatch(SQLAddTitles); 
+			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddPublishers); 
+			stmt.addBatch(SQLAddTitles); stmt.addBatch(SQLAddAuthorISBN);
 			
 			
 			
@@ -51,8 +51,8 @@ public class Tables {
 			SQLAddPublishers = "INSERT INTO publishers " +
 					"(publisherID, publisherName) " +
 					"VALUES(2, 'Bantam Spectra')";
-			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddAuthorISBN);
-			stmt.addBatch(SQLAddPublishers); stmt.addBatch(SQLAddTitles); 
+			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddPublishers); 
+			stmt.addBatch(SQLAddTitles); stmt.addBatch(SQLAddAuthorISBN); 
 
 			
 			
@@ -68,8 +68,8 @@ public class Tables {
 			SQLAddPublishers = "INSERT INTO publishers " +
 					"(publisherID, publisherName) " +
 					"VALUES(3, 'Charles Scribners Sons')";
-			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddAuthorISBN);
-			stmt.addBatch(SQLAddPublishers); stmt.addBatch(SQLAddTitles); 
+			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddPublishers); 
+			stmt.addBatch(SQLAddTitles); stmt.addBatch(SQLAddAuthorISBN);
 			
 			
 			
@@ -79,7 +79,7 @@ public class Tables {
 			SQLAddTitles = "INSERT INTO titles " +
 					"(isbn, title, editionNumber, copyright, publisherID, price) " +
 					"VALUES('747532745', 'Harry Potter and the Philosophers Stone', 3, 1997, 1, 30.00)";
-			stmt.addBatch(SQLAddAuthorISBN); stmt.addBatch(SQLAddTitles); 
+			stmt.addBatch(SQLAddTitles); stmt.addBatch(SQLAddAuthorISBN); 
 			
 			
 			
@@ -95,8 +95,8 @@ public class Tables {
 			SQLAddPublishers = "INSERT INTO publishers " +
 					"(publisherID, publisherName) " +
 					"VALUES(4, 'Viking')";
-			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddAuthorISBN);
-			stmt.addBatch(SQLAddPublishers); stmt.addBatch(SQLAddTitles); 
+			stmt.addBatch(SQLAddAuthor); stmt.addBatch(SQLAddPublishers); 
+			stmt.addBatch(SQLAddTitles); stmt.addBatch(SQLAddAuthorISBN);
 			
 			
 			

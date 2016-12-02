@@ -107,6 +107,25 @@ public class Statements {
 			
 			
 			
+			//add a new title for an author
+			stmt.executeUpdate(InsertTitle(567589, 4, 4, 2, 35.99));
+			stmt.executeUpdate(AddNewTitleAuthor("More Harry Potter", 567589, "J.K", "Rowling"));
+			rs = stmt.executeQuery("SELECT * " +
+									"FROM titles");
+			
+			while(rs.next()) {
+				System.out.println(rs.getLong("isbn") + " " + rs.getInt("editionNumber") + " " +
+						rs.getInt("copyright") + " " + rs.getInt("publisherID") + " " + rs.getDouble("price"));
+			}
+			
+			rs = stmt.executeQuery("SELECT * " +
+						"FROM authorISBN");
+			while(rs.next()) {
+				System.out.println(rs.getInt("authorID") + " " + rs.getLong("isbn"));
+			}
+			
+			System.out.println();
+			
 			//add new publisher
 			stmt.executeUpdate(AddPublisher("SJSU"));
 			System.out.println("Adding publisher SJSU");
@@ -159,6 +178,7 @@ public class Statements {
 		}
 	}
 	
+
 	//Select all authors from the authors table and order information
 	//alphabetically by the author's last name and first name
 	private static String SelectAuthors() {
@@ -190,6 +210,15 @@ public class Statements {
 				"VALUES ('" + firstName + "','" + lastName + "')";
 	}
 	
+	private static String InsertTitle(int isbn, int editionNumber,
+			int copyright, int publisherID, double price) {
+		String s = "INSERT INTO titles " +
+				"(isbn, editionNumber, copyright, publisherID, price) " +
+				"VALUES (" + isbn + ", " + editionNumber + ", " + copyright + ", " + publisherID + ", " + price + ")";
+		System.out.println(s);
+		return s;
+	}
+	
 	//edit/update existing information about an author
 	//updates authorID when given firstName and lastName
 	private static String UpdateAuthor(String firstName, String lastName, int NewAuthorID) {
@@ -199,8 +228,16 @@ public class Statements {
 	}
 	
 	//add a new title for an author
-	private static String AddNewTitleAuthor(String s) {
-		return "";
+	private static String AddNewTitleAuthor(String title, int isbn, String firstName, String lastName) {
+		String s = "INSERT INTO authorISBN " +
+				"(isbn, authorID) " +
+				"VALUES (" + isbn + ", " +
+						"(SELECT authorID " +
+						"FROM authors " +
+						"WHERE firstName='" + firstName + "' AND lastName='" + lastName + "'))";
+		
+		System.out.println(s);
+		return s;
 	}
 	
 	//add new publisher

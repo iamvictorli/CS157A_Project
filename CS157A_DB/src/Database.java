@@ -56,7 +56,11 @@ public class Database {
 	                   "(authorId INTEGER, " +
 	                   "isbn CHAR(10), " +
 	                   "FOREIGN KEY ( authorID ) REFERENCES authors ( authorID ) " +
-	                   		"ON UPDATE CASCADE)";
+	                   		"ON UPDATE CASCADE " +
+	                   		"ON DELETE CASCADE, " +
+	                   "FOREIGN KEY ( isbn ) REFERENCES titles ( isbn ) " +
+	                   		"ON UPDATE CASCADE " +
+	                   		"ON DELETE CASCADE)";
 		    
 		    String titles = "CREATE TABLE titles " +
 	                   "(isbn CHAR(10) NOT NULL, " +
@@ -75,9 +79,9 @@ public class Database {
 	                   "PRIMARY KEY ( publisherID ))";
 
 		    stmt.executeUpdate(authors);
-		    stmt.executeUpdate(authorISBN);
 		    stmt.executeUpdate(publishers);
 		    stmt.executeUpdate(titles);
+		    stmt.executeUpdate(authorISBN);
 		    
 		    
 		    stmt.close();

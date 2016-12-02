@@ -15,7 +15,7 @@ public class Main {
 		Database.CreateDB(USERNAME, PASSWORD, CONN_STRING, JDBC_DRIVER);
 		
 		//populating Books with tables
-		//Books connection string
+		//after creating a database, use Books database by String BookConnection 
 		String BookConnection = "jdbc:mysql://localhost/Books";
 		Database.PopulateDB(USERNAME, PASSWORD, BookConnection, JDBC_DRIVER);
 		
