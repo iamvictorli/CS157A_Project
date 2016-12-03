@@ -108,8 +108,8 @@ public class Statements {
 			
 			
 			//add a new title for an author
-			stmt.executeUpdate(InsertTitle(567589, 4, 4, 2, 35.99));
-			stmt.executeUpdate(AddNewTitleAuthor("More Harry Potter", 567589, "J.K", "Rowling"));
+			stmt.executeUpdate(InsertTitle(567589, "More Harry Potter", 4, 4, 1, 35.99));
+			stmt.executeUpdate(AddNewTitleAuthor(567589, "J.K", "Rowling"));
 			rs = stmt.executeQuery("SELECT * " +
 									"FROM titles");
 			
@@ -210,11 +210,11 @@ public class Statements {
 				"VALUES ('" + firstName + "','" + lastName + "')";
 	}
 	
-	private static String InsertTitle(int isbn, int editionNumber,
+	private static String InsertTitle(int isbn, String title, int editionNumber,
 			int copyright, int publisherID, double price) {
 		String s = "INSERT INTO titles " +
-				"(isbn, editionNumber, copyright, publisherID, price) " +
-				"VALUES (" + isbn + ", " + editionNumber + ", " + copyright + ", " + publisherID + ", " + price + ")";
+				"(isbn, title, editionNumber, copyright, publisherID, price) " +
+				"VALUES (" + isbn + ", '" + title + "', " + editionNumber + ", " + copyright + ", " + publisherID + ", " + price + ")";
 		System.out.println(s);
 		return s;
 	}
@@ -228,7 +228,7 @@ public class Statements {
 	}
 	
 	//add a new title for an author
-	private static String AddNewTitleAuthor(String title, int isbn, String firstName, String lastName) {
+	private static String AddNewTitleAuthor(int isbn, String firstName, String lastName) {
 		String s = "INSERT INTO authorISBN " +
 				"(isbn, authorID) " +
 				"VALUES (" + isbn + ", " +
