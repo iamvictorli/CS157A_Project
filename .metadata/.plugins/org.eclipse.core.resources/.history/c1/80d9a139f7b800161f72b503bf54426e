@@ -84,7 +84,7 @@ public class Statements {
 			//edit author id
 			stmt.executeUpdate(UpdateAuthor("J.K", "Rowling", 100));
 			System.out.println("Updating author J.K Rowling authorID");
-			System.out.println("Table authors and authorISBN before updating author");
+			System.out.println("Table authors and authorISBN after updating author");
 			
 			rs = stmt.executeQuery("SELECT * " +
 									"FROM authors");
@@ -95,10 +95,6 @@ public class Statements {
 				String lastName = rs.getString("lastName");
 				System.out.println("authorID: " + authorId + " firstName: " + firstName + " lastName: " + lastName);
 			}
-			
-			System.out.println();
-			System.out.println("Table authors and authorISBN after updating author");
-
 			rs = stmt.executeQuery("SELECT * " +
 									"FROM authorISBN");
 			while(rs.next()) {
@@ -112,14 +108,14 @@ public class Statements {
 			
 			
 			//add a new title for an author
-			stmt.executeUpdate(InsertTitle("747538492", "Harry Potter and the Chamber of Secrets", 4, "1998", 1, 21.70));
-			stmt.executeUpdate(AddNewTitleAuthor("747538492", "J.K", "Rowling"));
+			stmt.executeUpdate(InsertTitle(567589, "More Harry Potter", 4, 4, 1, 35.99));
+			stmt.executeUpdate(AddNewTitleAuthor(567589, "J.K", "Rowling"));
 			rs = stmt.executeQuery("SELECT * " +
 									"FROM titles");
 			
 			while(rs.next()) {
-				System.out.println("ISBN: " + rs.getString("isbn") + " title: " + rs.getString("title")  + " editionNumber: " + rs.getInt("editionNumber") + " copyright: " +
-						rs.getString("copyright") + " publisherID: " + rs.getInt("publisherID") + " price: " + rs.getFloat("price"));
+				System.out.println(rs.getLong("isbn") + " " + rs.getInt("editionNumber") + " " +
+						rs.getInt("copyright") + " " + rs.getInt("publisherID") + " " + rs.getDouble("price"));
 			}
 			
 			rs = stmt.executeQuery("SELECT * " +
@@ -129,8 +125,6 @@ public class Statements {
 			}
 			
 			System.out.println();
-			
-			
 			
 			//add new publisher
 			stmt.executeUpdate(AddPublisher("SJSU"));
@@ -152,7 +146,7 @@ public class Statements {
 			//update publisher
 			stmt.executeUpdate(UpdatePublisher("Bloomsbury", 5000));
 			System.out.println("Updating publisher Bloomsbury publisherID");
-			System.out.println("Table publishers after updating author");
+			System.out.println("Table publishers and titles after updating author");
 			
 			rs = stmt.executeQuery("SELECT * " +
 									"FROM publishers");
@@ -166,9 +160,6 @@ public class Statements {
 			rs = stmt.executeQuery("SELECT title, copyright, isbn, publisherID " +
 									"FROM titles");
 			
-			System.out.println();
-			System.out.println("Table titles after updating author");
-
 			while(rs.next()) {
 				String title = rs.getString("title");
 				String copyright = rs.getString("copyright");
@@ -219,6 +210,15 @@ public class Statements {
 				"VALUES ('" + firstName + "','" + lastName + "')";
 	}
 	
+	private static String InsertTitle(int isbn, String title, int editionNumber,
+			int copyright, int publisherID, double price) {
+		String s = "INSERT INTO titles " +
+				"(isbn, title, editionNumber, copyright, publisherID, price) " +
+				"VALUES (" + isbn + ", '" + title + "', " + editionNumber + ", " + copyright + ", " + publisherID + ", " + price + ")";
+		System.out.println(s);
+		return s;
+	}
+	
 	//edit/update existing information about an author
 	//updates authorID when given firstName and lastName
 	private static String UpdateAuthor(String firstName, String lastName, int NewAuthorID) {
@@ -228,22 +228,16 @@ public class Statements {
 	}
 	
 	//add a new title for an author
-	private static String InsertTitle(String isbn, String title, int editionNumber,
-			String copyright, int publisherID, double price) {
-		return "INSERT INTO titles " +
-				"(isbn, title, editionNumber, copyright, publisherID, price) " +
-				"VALUES (" + isbn + ", '" + title + "', " + editionNumber + ", " + copyright + ", " + publisherID + ", " + price + ")";
-	}
-	
-	//new entry for authorISBN table
-	private static String AddNewTitleAuthor(String isbn, String firstName, String lastName) {
-		return "INSERT INTO authorISBN " +
+	private static String AddNewTitleAuthor(int isbn, String firstName, String lastName) {
+		String s = "INSERT INTO authorISBN " +
 				"(isbn, authorID) " +
 				"VALUES (" + isbn + ", " +
 						"(SELECT authorID " +
 						"FROM authors " +
 						"WHERE firstName='" + firstName + "' AND lastName='" + lastName + "'))";
 		
+		System.out.println(s);
+		return s;
 	}
 	
 	//add new publisher

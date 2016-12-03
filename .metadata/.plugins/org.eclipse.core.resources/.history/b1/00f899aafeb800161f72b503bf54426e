@@ -132,6 +132,7 @@ public class Statements {
 			
 			
 			
+			
 			//add new publisher
 			stmt.executeUpdate(AddPublisher("SJSU"));
 			System.out.println("Adding publisher SJSU");

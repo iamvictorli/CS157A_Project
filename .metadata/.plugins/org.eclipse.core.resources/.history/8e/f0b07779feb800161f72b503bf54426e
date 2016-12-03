@@ -113,7 +113,7 @@ public class Statements {
 			
 			//add a new title for an author
 			stmt.executeUpdate(InsertTitle("747538492", "Harry Potter and the Chamber of Secrets", 4, "1998", 1, 21.70));
-			stmt.executeUpdate(AddNewTitleAuthor("747538492", "J.K", "Rowling"));
+			stmt.executeUpdate(AddNewTitleAuthor(747538492, "J.K", "Rowling"));
 			rs = stmt.executeQuery("SELECT * " +
 									"FROM titles");
 			
@@ -129,8 +129,6 @@ public class Statements {
 			}
 			
 			System.out.println();
-			
-			
 			
 			//add new publisher
 			stmt.executeUpdate(AddPublisher("SJSU"));
@@ -236,7 +234,7 @@ public class Statements {
 	}
 	
 	//new entry for authorISBN table
-	private static String AddNewTitleAuthor(String isbn, String firstName, String lastName) {
+	private static String AddNewTitleAuthor(int isbn, String firstName, String lastName) {
 		return "INSERT INTO authorISBN " +
 				"(isbn, authorID) " +
 				"VALUES (" + isbn + ", " +

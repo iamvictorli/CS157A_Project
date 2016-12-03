@@ -130,8 +130,6 @@ public class Statements {
 			
 			System.out.println();
 			
-			
-			
 			//add new publisher
 			stmt.executeUpdate(AddPublisher("SJSU"));
 			System.out.println("Adding publisher SJSU");
