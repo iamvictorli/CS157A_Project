@@ -113,7 +113,7 @@ public class Statements {
 			
 			//add a new title for an author
 			System.out.println("Adding new title for author");
-			System.out.println("For example: Harry Potter and the chamber of secrets by J.K Rowling ISBN: 747538492");
+			System.out.println("For example: Harry Potter and the chamber of secrets by J.K Rowling");
 			stmt.executeUpdate(InsertTitle("747538492", "Harry Potter and the Chamber of Secrets", 4, "1998", 1, 21.70));
 			stmt.executeUpdate(AddNewTitleAuthor("747538492", "J.K", "Rowling"));
 			

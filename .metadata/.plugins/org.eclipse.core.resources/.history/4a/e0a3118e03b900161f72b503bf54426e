@@ -41,12 +41,7 @@ public class Tables {
 			listOfAuthors.add(new Author("George", "Orwell"));
 			listOfAuthors.add(new Author("Mark", "Twain"));
 			listOfAuthors.add(new Author("Charles", "Dickens"));
-			listOfAuthors.add(new Author("Mary", "Shelley"));
-			listOfAuthors.add(new Author("Herman", "Melville"));
-			listOfAuthors.add(new Author("Lewis", "Carroll"));
-			listOfAuthors.add(new Author("Oscar", "Wilde"));
-			listOfAuthors.add(new Author("Bram", "Stoker"));
-			listOfAuthors.add(new Author("Khaled", "Hosseini"));
+			
 			
 			for(Author a: listOfAuthors) {
 				stmt.setString(1, a.firstName);
@@ -75,13 +70,6 @@ public class Tables {
 			listOfPublishers.add("Secker and Warburg");
 			listOfPublishers.add("American Publishing Company");
 			listOfPublishers.add("Chapen and Hall");
-			listOfPublishers.add("Lackington, Hughes, Harding, Mavor & Jones");
-			listOfPublishers.add("Harper & Brothers");
-			listOfPublishers.add("Macmilliam");
-			listOfPublishers.add("Lippincott's Monthly Magazine");
-			listOfPublishers.add("Archibald Constable and Company");
-			listOfPublishers.add("Riverhead Books");
-			
 			
 			for(String s: listOfPublishers) {
 				stmt.setString(1, s);
@@ -122,12 +110,6 @@ public class Tables {
 			ListOfTitles.add(new titles("978014139", "Animal Farm", 51, "1945", 9, 13.49f));
 			ListOfTitles.add(new titles("978142349", "The Adventure of Tom Sawyer", 6, "1876", 10, 4.79f));
 			ListOfTitles.add(new titles("393960692", "Great Expectations", 4, "1861", 11, 9.99f));
-			ListOfTitles.add(new titles("978185124", "Frankenstein", 23, "1818", 12, 7.99f));
-			ListOfTitles.add(new titles("393096704", "Moby Dick", 5, "1851", 13, 4.95f));
-			ListOfTitles.add(new titles("978041507", "Alice's Adventures in Wonderland", 20, "1865", 14, 4.95f));
-			ListOfTitles.add(new titles("978067406", "The Picture of Dorian Gray", 19, "1890", 15, 21.99f));
-			ListOfTitles.add(new titles("973577197", "Dracula", 90, "1897", 16, 12.97f));
-			ListOfTitles.add(new titles("157322245", "The Kite Runner", 5, "2003", 17, 23.59f));
 			
 			for(titles t: ListOfTitles) {
 				stmt.setString(1, t.isbn);
@@ -170,14 +152,8 @@ public class Tables {
 			ListOfAuthorISBN.add(new authorISBN(7, "185435437"));
 			ListOfAuthorISBN.add(new authorISBN(8, "571056862"));
 			ListOfAuthorISBN.add(new authorISBN(9, "978014139"));
-			ListOfAuthorISBN.add(new authorISBN(10, "978142349"));
-			ListOfAuthorISBN.add(new authorISBN(11, "393960692"));
-			ListOfAuthorISBN.add(new authorISBN(12, "978185124"));
-			ListOfAuthorISBN.add(new authorISBN(13, "393096704"));
-			ListOfAuthorISBN.add(new authorISBN(14, "978041507"));
-			ListOfAuthorISBN.add(new authorISBN(15, "978067406"));
-			ListOfAuthorISBN.add(new authorISBN(16, "973577197"));
-			ListOfAuthorISBN.add(new authorISBN(17, "157322245"));
+			ListOfAuthorISBN.add(new authorISBN(9, "978142349"));
+			ListOfAuthorISBN.add(new authorISBN(10, "393960692"));
 			
 			for(authorISBN a: ListOfAuthorISBN) {
 				stmt.setInt(1, a.authorID);

@@ -84,7 +84,7 @@ public class Statements {
 			//edit author id
 			stmt.executeUpdate(UpdateAuthor("J.K", "Rowling", 100));
 			System.out.println("Updating author J.K Rowling authorID");
-			System.out.println("Table authors after updating author");
+			System.out.println("Table authors and authorISBN before updating author");
 			
 			rs = stmt.executeQuery("SELECT * " +
 									"FROM authors");
@@ -97,7 +97,7 @@ public class Statements {
 			}
 			
 			System.out.println();
-			System.out.println("Table authorISBN after updating author");
+			System.out.println("Table authors and authorISBN after updating author");
 
 			rs = stmt.executeQuery("SELECT * " +
 									"FROM authorISBN");
@@ -112,12 +112,8 @@ public class Statements {
 			
 			
 			//add a new title for an author
-			System.out.println("Adding new title for author");
-			System.out.println("For example: Harry Potter and the chamber of secrets by J.K Rowling ISBN: 747538492");
 			stmt.executeUpdate(InsertTitle("747538492", "Harry Potter and the Chamber of Secrets", 4, "1998", 1, 21.70));
 			stmt.executeUpdate(AddNewTitleAuthor("747538492", "J.K", "Rowling"));
-			
-			System.out.println("Table titles");
 			rs = stmt.executeQuery("SELECT * " +
 									"FROM titles");
 			
@@ -126,8 +122,6 @@ public class Statements {
 						rs.getString("copyright") + " publisherID: " + rs.getInt("publisherID") + " price: " + rs.getFloat("price"));
 			}
 			
-			System.out.println();
-			System.out.println("Table authorISBN");
 			rs = stmt.executeQuery("SELECT * " +
 						"FROM authorISBN");
 			while(rs.next()) {
@@ -173,7 +167,7 @@ public class Statements {
 									"FROM titles");
 			
 			System.out.println();
-			System.out.println("Table titles after updating publisher");
+			System.out.println("Table titles after updating author");
 
 			while(rs.next()) {
 				String title = rs.getString("title");

@@ -173,11 +173,10 @@ public class Tables {
 			ListOfAuthorISBN.add(new authorISBN(10, "978142349"));
 			ListOfAuthorISBN.add(new authorISBN(11, "393960692"));
 			ListOfAuthorISBN.add(new authorISBN(12, "978185124"));
-			ListOfAuthorISBN.add(new authorISBN(13, "393096704"));
-			ListOfAuthorISBN.add(new authorISBN(14, "978041507"));
-			ListOfAuthorISBN.add(new authorISBN(15, "978067406"));
-			ListOfAuthorISBN.add(new authorISBN(16, "973577197"));
-			ListOfAuthorISBN.add(new authorISBN(17, "157322245"));
+			ListOfAuthorISBN.add(new authorISBN(13, "978041507"));
+			ListOfAuthorISBN.add(new authorISBN(14, "978067406"));
+			ListOfAuthorISBN.add(new authorISBN(15, "973577197"));
+			ListOfAuthorISBN.add(new authorISBN(16, "157322245"));
 			
 			for(authorISBN a: ListOfAuthorISBN) {
 				stmt.setInt(1, a.authorID);
