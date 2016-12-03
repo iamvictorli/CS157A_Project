@@ -145,7 +145,7 @@ public class Statements {
 			
 			
 			//update publisher
-			stmt.executeUpdate(UpdatePublisher("Bloomsbury", 5000));
+			stmt.executeUpdate(UpdatePublisher("Bloomsbury", "Best Publisher Company"));
 			System.out.println("Updating publisher Bloomsbury publisherID");
 			System.out.println("Table publishers after updating author");
 			
@@ -250,9 +250,9 @@ public class Statements {
 	
 	//edit/update existing information about a publisher
 	//updates publisherID when given publisherName
-	private static String UpdatePublisher(String publisherName, int NewPublisherID) {
+	private static String UpdatePublisher(String publisherName, String newPublisherName) {
 		return "UPDATE publishers " +
-				"SET publisherID=" + NewPublisherID +
+				"SET publisherName=" + newPublisherName +
 				" WHERE publisherName='" + publisherName + "'";
 	}
 }
